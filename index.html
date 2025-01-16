@@ -3,232 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronic Pen Technical Documentation</title>
+    <title>Interactive Electronic Pen Documentation</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    
     <style>
-        .diagram-container {
-            background-color: white;
-            padding: 1rem;
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes highlight {
+            0% { background-position: -100% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulsing {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .highlight-gradient {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(59, 130, 246, 0.1) 50%, 
+                transparent 100%);
+            background-size: 200% 100%;
+            animation: highlight 3s linear infinite;
+        }
+
+        .component-card {
+            transition: transform 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .pen-diagram {
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scrolling-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .scrolling-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .interactive-model {
+            width: 100%;
+            height: 400px;
+            background: #f8f9fa;
             border-radius: 8px;
-            margin: 1rem 0;
+            position: relative;
         }
-        .component-link {
-            stroke: #666;
-            stroke-width: 1.5px;
+
+        .component-highlight {
+            position: absolute;
+            border: 2px solid #3b82f6;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .component-node {
-            fill: #fff;
-            stroke: #333;
-            stroke-width: 1.5px;
+
+        .loading-animation {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
-        .technical-note {
-            background-color: #f8f9fa;
-            border-left: 4px solid #4a5568;
-            padding: 1rem;
-            margin: 1rem 0;
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .exploded-view {
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .exploded-view:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold mb-8 text-center">Electronic Pen Technical Documentation</h1>
+        <!-- Hero Section with Animated Title -->
+        <div class="text-center mb-12 relative overflow-hidden">
+            <h1 class="text-5xl font-bold mb-4 floating">
+                Electronic Pen Structure
+            </h1>
+            <p class="text-xl text-gray-600 pulsing">
+                Interactive Technical Documentation
+            </p>
+        </div>
 
-        <!-- Main Components Interactive Diagram -->
+        <!-- Interactive 3D Model Section -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Component Integration Diagram</h2>
+            <h2 class="text-2xl font-bold mb-4">Interactive 3D Model</h2>
+            <div id="3d-model" class="interactive-model">
+                <!-- WebGL content will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Animated Component Breakdown -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Writing Device Card -->
+            <div class="component-card bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Writing Device</h3>
+                <div class="highlight-gradient p-4 rounded">
+                    <ul class="list-disc ml-4">
+                        <li class="mb-2">First Portion (10A)</li>
+                        <li class="mb-2">Second Portion (10B)</li>
+                        <li class="mb-2">Lead Delivery System</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pressure System Card -->
+            <div class="component-card bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Pressure System</h3>
+                <div class="highlight-gradient p-4 rounded">
+                    <ul class="list-disc ml-4">
+                        <li class="mb-2">Transmitter (14)</li>
+                        <li class="mb-2">Detector (15)</li>
+                        <li class="mb-2">Signal Processing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Electronics Card -->
+            <div class="component-card bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4">Electronics</h3>
+                <div class="highlight-gradient p-4 rounded">
+                    <ul class="list-disc ml-4">
+                        <li class="mb-2">Circuit Board (16)</li>
+                        <li class="mb-2">Core Section (11)</li>
+                        <li class="mb-2">Resonance Circuit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Diagram Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Component Diagram</h2>
+            <div class="pen-diagram" id="diagram-container">
+                <!-- SVG or Canvas content will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Animated Mermaid Diagram -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Structure Hierarchy</h2>
             <div class="mermaid">
-                graph TB
-                    MainBody[Electronic Pen Body]
-                    CoreSection[Core Section]
-                    PressureSystem[Pressure System]
-                    WritingUnit[Writing Unit]
-                    Electronics[Electronics]
-
-                    MainBody --> CoreSection
-                    MainBody --> PressureSystem
-                    MainBody --> WritingUnit
-                    MainBody --> Electronics
-
-                    subgraph CoreComponents
-                        CoreSection --> Ferrite[Ferrite Core]
-                        CoreSection --> Coil[EMR/AES Coil]
-                    end
-
-                    subgraph PressureComponents
-                        PressureSystem --> Transmitter[Pressure Transmitter]
-                        PressureSystem --> Detector[Pressure Detector]
-                        Transmitter --> TubularPortion[Tubular Portion]
-                        Transmitter --> ExtensionPart[Extension Portion]
-                        Transmitter --> PressingPart[Pressing Portion]
-                    end
-
-                    subgraph WritingComponents
-                        WritingUnit --> FirstPortion[First Portion]
-                        WritingUnit --> SecondPortion[Second Portion]
-                        FirstPortion --> PenTip[Pen Tip]
-                        FirstPortion --> LeadMechanism[Lead Mechanism]
-                        SecondPortion --> LeadStorage[Lead Storage]
-                        SecondPortion --> InsertionPort[Lead Insertion Port]
-                    end
-
-                    subgraph ElectronicComponents
-                        Electronics --> CircuitBoard[Circuit Board]
-                        Electronics --> Resonance[Resonance Circuit]
-                        Electronics --> TransmissionSystem[Transmission System]
-                    end
-
-                    style MainBody fill:#f9f,stroke:#333,stroke-width:4px
-                    style CoreSection fill:#bbf,stroke:#333
-                    style PressureSystem fill:#bfb,stroke:#333
-                    style WritingUnit fill:#fbb,stroke:#333
-                    style Electronics fill:#bff,stroke:#333
+                graph TD
+                    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+                    classDef highlight fill:#e3f2fd,stroke:#1976d2,stroke-width:3px;
+                    
+                    A[Electronic Pen] -->|Houses| B[Writing Device]
+                    A -->|Contains| C[Pressure System]
+                    A -->|Includes| D[Electronics]
+                    
+                    B -->|Components| B1[First Portion]
+                    B -->|Components| B2[Second Portion]
+                    B1 -->|Features| B1a[Pen Tip]
+                    B1 -->|Contains| B1b[Lead Mechanism]
+                    
+                    C -->|Parts| C1[Transmitter]
+                    C -->|Parts| C2[Detector]
+                    C -->|Parts| C3[Processing]
+                    
+                    D -->|Contains| D1[Circuit Board]
+                    D -->|Houses| D2[Core Section]
+                    D -->|Features| D3[Resonance Circuit]
+                    
+                    class A,B,C,D highlight;
             </div>
         </div>
 
-        <!-- Technical Specifications -->
+        <!-- Animated Feature List -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Technical Specifications</h2>
-            
+            <h2 class="text-2xl font-bold mb-4">Key Features</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Writing Unit Specs -->
-                <div class="technical-note">
-                    <h3 class="text-xl font-bold mb-2">Writing Unit</h3>
+                <div class="scrolling-text">
+                    <h3 class="text-xl font-bold mb-2">Mechanical Features</h3>
                     <ul class="list-disc ml-6">
-                        <li>First Portion Diameter: Variable (Tapered Design)</li>
-                        <li>Lead Size Compatibility: 0.3mm - 0.7mm</li>
-                        <li>Chuck Mechanism: Triple-split design</li>
-                        <li>Lead Storage Capacity: Multiple leads</li>
+                        <li class="mb-2">Lead Delivery System</li>
+                        <li class="mb-2">Pressure Detection</li>
+                        <li class="mb-2">Eraser Function</li>
                     </ul>
                 </div>
-
-                <!-- Pressure System Specs -->
-                <div class="technical-note">
-                    <h3 class="text-xl font-bold mb-2">Pressure System</h3>
+                <div class="scrolling-text">
+                    <h3 class="text-xl font-bold mb-2">Electronic Features</h3>
                     <ul class="list-disc ml-6">
-                        <li>Detection Range: Multiple pressure levels</li>
-                        <li>Transmitter Design: Off-axis configuration</li>
-                        <li>Detector Type: Capacitive/Resistive</li>
-                        <li>Response Time: Real-time detection</li>
-                    </ul>
-                </div>
-
-                <!-- Core Section Specs -->
-                <div class="technical-note">
-                    <h3 class="text-xl font-bold mb-2">Core Section</h3>
-                    <ul class="list-disc ml-6">
-                        <li>Ferrite Core Type: Tubular design</li>
-                        <li>Coil Configuration: EMR/AES compatible</li>
-                        <li>Signal Frequency: Variable based on system</li>
-                        <li>Core Material: High-permeability ferrite</li>
-                    </ul>
-                </div>
-
-                <!-- Electronics Specs -->
-                <div class="technical-note">
-                    <h3 class="text-xl font-bold mb-2">Electronics</h3>
-                    <ul class="list-disc ml-6">
-                        <li>Circuit Type: Resonant/Capacitive</li>
-                        <li>Power Source: EMR/Battery (AES)</li>
-                        <li>Signal Processing: Real-time</li>
-                        <li>Communication: Wireless</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Functional Description -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Operational Principles</h2>
-            
-            <div class="mb-6">
-                <h3 class="text-xl font-bold mb-2">Writing Mechanism</h3>
-                <p class="mb-4">The writing mechanism employs a sophisticated mechanical pencil system with the following key features:</p>
-                <ul class="list-disc ml-6 mb-4">
-                    <li>Lead delivery controlled by knocker mechanism</li>
-                    <li>Self-adjusting chuck system for consistent lead grip</li>
-                    <li>Spring-loaded pressure distribution</li>
-                    <li>Lead breakage prevention system</li>
-                </ul>
-            </div>
-
-            <div class="mb-6">
-                <h3 class="text-xl font-bold mb-2">Pressure Detection System</h3>
-                <p class="mb-4">The innovative off-axis pressure detection system features:</p>
-                <ul class="list-disc ml-6 mb-4">
-                    <li>Mechanical pressure transmission through linkage</li>
-                    <li>Precise pressure quantification</li>
-                    <li>Real-time pressure data processing</li>
-                    <li>Multi-level pressure sensitivity</li>
-                </ul>
-            </div>
-
-            <div class="mb-6">
-                <h3 class="text-xl font-bold mb-2">Signal Processing</h3>
-                <p class="mb-4">The electronic system processes and transmits data through:</p>
-                <ul class="list-disc ml-6 mb-4">
-                    <li>EMR/AES signal generation</li>
-                    <li>Position data processing</li>
-                    <li>Pressure data integration</li>
-                    <li>Wireless data transmission</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Connection Diagrams -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">System Integration</h2>
-            <div class="mermaid">
-                flowchart TB
-                    subgraph MechanicalSystem
-                        WriteM[Writing Mechanism]
-                        PressM[Pressure Mechanism]
-                        LeadM[Lead Management]
-                    end
-
-                    subgraph ElectronicSystem
-                        PS[Pressure Sensor]
-                        CB[Circuit Board]
-                        TC[Transmission Circuit]
-                    end
-
-                    subgraph CommunicationSystem
-                        EMR[EMR Signal]
-                        AES[AES Signal]
-                        PD[Position Detection]
-                    end
-
-                    WriteM --> PressM
-                    PressM --> PS
-                    PS --> CB
-                    CB --> TC
-                    TC --> EMR & AES
-                    EMR & AES --> PD
-                    LeadM --> WriteM
-            </div>
-        </div>
-
-        <!-- Material Properties -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold mb-4">Material Specifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="technical-note">
-                    <h3 class="text-xl font-bold mb-2">Structural Components</h3>
-                    <ul class="list-disc ml-6">
-                        <li>Outer Casing: Durable synthetic resin</li>
-                        <li>Core Section: High-grade ferrite</li>
-                        <li>Mechanical Parts: Precision-engineered metals</li>
-                        <li>Circuit Housing: Impact-resistant materials</li>
-                    </ul>
-                </div>
-                <div class="technical-note">
-                    <h3 class="text-xl font-bold mb-2">Electronic Components</h3>
-                    <ul class="list-disc ml-6">
-                        <li>Circuit Board: Multi-layer PCB</li>
-                        <li>Sensors: High-sensitivity materials</li>
-                        <li>Coil: Precision-wound copper</li>
-                        <li>Connectors: Gold-plated contacts</li>
+                        <li class="mb-2">EMR/AES Compatibility</li>
+                        <li class="mb-2">Position Detection</li>
+                        <li class="mb-2">Pressure Sensitivity</li>
                     </ul>
                 </div>
             </div>
@@ -236,13 +231,83 @@
     </div>
 
     <script>
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize Mermaid
         mermaid.initialize({
             startOnLoad: true,
             theme: 'default',
             securityLevel: 'loose',
-            flowchart: {
-                curve: 'basis'
+        });
+
+        // Initialize Three.js
+        function init3DModel() {
+            const container = document.getElementById('3d-model');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            // Add basic pen model (simplified for example)
+            const geometry = new THREE.CylinderGeometry(0.5, 0.5, 5, 32);
+            const material = new THREE.MeshPhongMaterial({ color: 0x156289 });
+            const pen = new THREE.Mesh(geometry, material);
+            
+            scene.add(pen);
+            
+            // Add lighting
+            const light = new THREE.PointLight(0xffffff, 1, 100);
+            light.position.set(10, 10, 10);
+            scene.add(light);
+            
+            camera.position.z = 10;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                pen.rotation.y += 0.01;
+                renderer.render(scene, camera);
             }
+            animate();
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const scrollingTexts = document.querySelectorAll('.scrolling-text');
+            
+            scrollingTexts.forEach(text => {
+                gsap.from(text, {
+                    scrollTrigger: {
+                        trigger: text,
+                        start: "top 80%",
+                        toggleClass: "visible"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1
+                });
+            });
+
+            // Component cards animation
+            gsap.from('.component-card', {
+                scrollTrigger: {
+                    trigger: '.component-card',
+                    start: "top 80%",
+                    stagger: 0.2
+                },
+                y: 100,
+                opacity: 0,
+                duration: 1
+            });
+        }
+
+        // Initialize everything when the page loads
+        window.addEventListener('load', () => {
+            init3DModel();
+            initScrollAnimations();
         });
     </script>
 </body>
