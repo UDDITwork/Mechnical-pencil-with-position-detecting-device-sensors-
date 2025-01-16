@@ -111,6 +111,77 @@
     </style>
 </head>
 <body class="bg-gray-100">
+    <div class="mermaid">
+    graph TD
+        A[Electronic Pen] --> B[Writing Device]
+        A --> C[Pen Pressure Transmitter]
+        A --> D[Pen Pressure Detector]
+        A --> E[Inner Casing]
+        A --> F[Core Section]
+        A --> G[Circuit Board]
+        A --> H[Outer Casing]
+        A --> I[Knocker]
+        A --> J[Eraser Unit (Optional)]
+        A --> K[Resonance Circuit (EMR)]
+        A --> L[Capacitive Coupling Circuit (AES)]
+        A --> M[Position Detecting Device]
+
+        B --> B1[First Portion (10A)]
+        B --> B2[Second Portion (10B)]
+        B1 --> B1a[Tapered Pen Tip]
+        B1 --> B1b[Lead Delivery Mechanism]
+        B1b --> B1b1[Chuck Section (10A3)]
+        B1b1 --> B1b1a[Lead Chuck (10A2)]
+        B1b --> B1b2[Grasping Section (10A5)]
+        B1b --> B1b3[Coil Spring (10A4)]
+        B2 --> B2a[Lead Insertion Port (10S)]
+        B2 --> B2b[Tubular Body]
+
+        C --> C1[Tubular Portion (14A)]
+        C --> C2[Extension Portion (14B)]
+        C --> C3[Pressing Portion (14C)]
+
+        D --> D1[Holding Section]
+        D --> D2[Conductive Rubber]
+        D --> D3[Dielectric]
+        D --> D4[Terminal Members]
+        D --> D5[Connection Portion (15A)]
+
+        E --> E1[Accommodating Section (13A)]
+        E --> E2[First Mount Section (13B)]
+        E --> E3[Second Mount Section (13C)]
+        E --> E4[Projections (13D, 13E)]
+        E --> E5[Fitting Projection (13F)]
+
+        F --> F1[Ferrite Core (11A)]
+        F --> F2[Coil (11B)]
+
+        G --> G1[Resonance Circuit]
+        G --> G2[Control Circuit]
+
+        H --> H1[Tapered Pen Tip]
+        H --> H2[Rear Holding Member (18)]
+
+        I --> I1[Columnar Portion (19A)]
+        I --> I2[Knocking Portion (19B)]
+
+        J --> J1[Eraser (10F)]
+        J --> J2[Pressure Transmitter (21 or 22)]
+        J --> J3[Core Section (11X)]
+        J2 --> J2a[Tubular Portion (21A or 22A)]
+        J2 --> J2b[Extension Portion (21B or 22B)]
+        J2 --> J2c[Pressing Portion (21C or 22C)]
+        J3 --> J3a[Coil (11D)]
+
+        K --> K1[Coil (11B)]
+        K --> K2[Capacitors]
+
+        L --> L1[Oscillation Circuit (16a)]
+        L --> L2[Conductive Member (First Portion 10A)]
+
+        M --> M1[Sensor Section (2B)]
+        M --> M2[Position Detection Circuit (2C)]
+</div>
     <div class="container mx-auto px-4 py-8">
         <!-- Hero Section with Animated Title -->
         <div class="text-center mb-12 relative overflow-hidden">
