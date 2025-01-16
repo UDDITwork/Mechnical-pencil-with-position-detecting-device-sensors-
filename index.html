@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Pen Structure Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js"></script>
+    <style>
+        .mermaid {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center">Electronic Pen Structure Analysis</h1>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Overview</h2>
+            <p class="mb-4">The US10216295B2 patent describes an innovative electronic pen that combines mechanical pencil functionality with digital input capabilities. This pen can detect writing pressure and transmit data while leaving physical marks on paper.</p>
+        </div>
+
+        <!-- Core Components Structure -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Core Components Structure</h2>
+            <div class="mermaid">
+                flowchart TD
+                    A[Electronic Pen] --> B[Writing Device]
+                    A --> C[Pressure System]
+                    A --> D[Electronics]
+                    B --> B1[First Portion]
+                    B --> B2[Second Portion]
+                    C --> C1[Pen Pressure Transmitter]
+                    C --> C2[Pen Pressure Detector]
+                    D --> D1[Core Section]
+                    D --> D2[Circuit Board]
+                    D --> D3[Transmission Circuit]
+            </div>
+        </div>
+
+        <!-- Writing Device Details -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Writing Device Components</h2>
+            <div class="mermaid">
+                flowchart TD
+                    WD[Writing Device] --> FP[First Portion]
+                    WD --> SP[Second Portion]
+                    FP --> TP[Tapered Pen Tip]
+                    FP --> LDM[Lead Delivery Mechanism]
+                    LDM --> CS[Chuck Section]
+                    LDM --> GS[Grasping Section]
+                    LDM --> CSpring[Coil Spring]
+                    SP --> LIP[Lead Insertion Port]
+                    SP --> TB[Tubular Body]
+            </div>
+        </div>
+
+        <!-- Pressure Detection System -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Pressure Detection System</h2>
+            <div class="mermaid">
+                flowchart TD
+                    PDS[Pressure Detection System] --> PPT[Pen Pressure Transmitter]
+                    PDS --> PPD[Pen Pressure Detector]
+                    PPT --> TP[Tubular Portion]
+                    PPT --> EP[Extension Portion]
+                    PPT --> PP[Pressing Portion]
+                    PPD --> HS[Holding Section]
+                    PPD --> CR[Conductive Rubber]
+                    PPD --> CP[Connection Portion]
+            </div>
+        </div>
+
+        <!-- Detailed Explanations -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Technical Details</h2>
+            
+            <h3 class="text-xl font-bold mb-2">Writing Device</h3>
+            <p class="mb-4">The writing device consists of two main portions:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>First Portion: Contains the pen tip and lead delivery mechanism</li>
+                <li>Second Portion: Houses the lead storage and insertion system</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mb-2">Pressure System</h3>
+            <p class="mb-4">The innovative pressure detection system includes:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Pen Pressure Transmitter: Transfers writing pressure through a mechanical linkage</li>
+                <li>Pressure Detector: Converts mechanical pressure into electronic signals</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mb-2">Electronic Components</h3>
+            <p class="mb-4">The electronic system consists of:</p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>Core Section: Contains the coil for electromagnetic resonance</li>
+                <li>Circuit Board: Processes pressure and position data</li>
+                <li>Transmission Circuit: Communicates with the position detecting device</li>
+            </ul>
+        </div>
+
+        <!-- Key Innovations -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-4">Key Innovations</h2>
+            <ul class="list-disc ml-6">
+                <li class="mb-2">Off-axis pressure detection system that doesn't interfere with lead movement</li>
+                <li class="mb-2">Integrated mechanical pencil functionality with digital input capabilities</li>
+                <li class="mb-2">Dual-purpose design allowing both physical writing and digital data capture</li>
+                <li class="mb-2">Compatible with both EMR and AES position detecting systems</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+        });
+    </script>
+</body>
+</html>
