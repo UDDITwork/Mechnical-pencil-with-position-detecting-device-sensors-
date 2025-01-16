@@ -3,114 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronic Pen Structure Analysis</title>
+    <title>Electronic Pen Technical Documentation</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
-        .mermaid {
+        .diagram-container {
             background-color: white;
             padding: 1rem;
             border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .component-link {
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
+        .component-node {
+            fill: #fff;
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+        .technical-note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4a5568;
+            padding: 1rem;
             margin: 1rem 0;
         }
     </style>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold mb-8 text-center">Electronic Pen Structure Analysis</h1>
+        <h1 class="text-4xl font-bold mb-8 text-center">Electronic Pen Technical Documentation</h1>
 
+        <!-- Main Components Interactive Diagram -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Overview</h2>
-            <p class="mb-4">The US10216295B2 patent describes an innovative electronic pen that combines mechanical pencil functionality with digital input capabilities. This pen can detect writing pressure and transmit data while leaving physical marks on paper.</p>
-        </div>
-
-        <!-- Core Components Structure -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Core Components Structure</h2>
+            <h2 class="text-2xl font-bold mb-4">Component Integration Diagram</h2>
             <div class="mermaid">
-                flowchart TD
-                    A[Electronic Pen] --> B[Writing Device]
-                    A --> C[Pressure System]
-                    A --> D[Electronics]
-                    B --> B1[First Portion]
-                    B --> B2[Second Portion]
-                    C --> C1[Pen Pressure Transmitter]
-                    C --> C2[Pen Pressure Detector]
-                    D --> D1[Core Section]
-                    D --> D2[Circuit Board]
-                    D --> D3[Transmission Circuit]
+                graph TB
+                    MainBody[Electronic Pen Body]
+                    CoreSection[Core Section]
+                    PressureSystem[Pressure System]
+                    WritingUnit[Writing Unit]
+                    Electronics[Electronics]
+
+                    MainBody --> CoreSection
+                    MainBody --> PressureSystem
+                    MainBody --> WritingUnit
+                    MainBody --> Electronics
+
+                    subgraph CoreComponents
+                        CoreSection --> Ferrite[Ferrite Core]
+                        CoreSection --> Coil[EMR/AES Coil]
+                    end
+
+                    subgraph PressureComponents
+                        PressureSystem --> Transmitter[Pressure Transmitter]
+                        PressureSystem --> Detector[Pressure Detector]
+                        Transmitter --> TubularPortion[Tubular Portion]
+                        Transmitter --> ExtensionPart[Extension Portion]
+                        Transmitter --> PressingPart[Pressing Portion]
+                    end
+
+                    subgraph WritingComponents
+                        WritingUnit --> FirstPortion[First Portion]
+                        WritingUnit --> SecondPortion[Second Portion]
+                        FirstPortion --> PenTip[Pen Tip]
+                        FirstPortion --> LeadMechanism[Lead Mechanism]
+                        SecondPortion --> LeadStorage[Lead Storage]
+                        SecondPortion --> InsertionPort[Lead Insertion Port]
+                    end
+
+                    subgraph ElectronicComponents
+                        Electronics --> CircuitBoard[Circuit Board]
+                        Electronics --> Resonance[Resonance Circuit]
+                        Electronics --> TransmissionSystem[Transmission System]
+                    end
+
+                    style MainBody fill:#f9f,stroke:#333,stroke-width:4px
+                    style CoreSection fill:#bbf,stroke:#333
+                    style PressureSystem fill:#bfb,stroke:#333
+                    style WritingUnit fill:#fbb,stroke:#333
+                    style Electronics fill:#bff,stroke:#333
             </div>
         </div>
 
-        <!-- Writing Device Details -->
+        <!-- Technical Specifications -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Writing Device Components</h2>
-            <div class="mermaid">
-                flowchart TD
-                    WD[Writing Device] --> FP[First Portion]
-                    WD --> SP[Second Portion]
-                    FP --> TP[Tapered Pen Tip]
-                    FP --> LDM[Lead Delivery Mechanism]
-                    LDM --> CS[Chuck Section]
-                    LDM --> GS[Grasping Section]
-                    LDM --> CSpring[Coil Spring]
-                    SP --> LIP[Lead Insertion Port]
-                    SP --> TB[Tubular Body]
-            </div>
-        </div>
-
-        <!-- Pressure Detection System -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Pressure Detection System</h2>
-            <div class="mermaid">
-                flowchart TD
-                    PDS[Pressure Detection System] --> PPT[Pen Pressure Transmitter]
-                    PDS --> PPD[Pen Pressure Detector]
-                    PPT --> TP[Tubular Portion]
-                    PPT --> EP[Extension Portion]
-                    PPT --> PP[Pressing Portion]
-                    PPD --> HS[Holding Section]
-                    PPD --> CR[Conductive Rubber]
-                    PPD --> CP[Connection Portion]
-            </div>
-        </div>
-
-        <!-- Detailed Explanations -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Technical Details</h2>
+            <h2 class="text-2xl font-bold mb-4">Technical Specifications</h2>
             
-            <h3 class="text-xl font-bold mb-2">Writing Device</h3>
-            <p class="mb-4">The writing device consists of two main portions:</p>
-            <ul class="list-disc ml-6 mb-4">
-                <li>First Portion: Contains the pen tip and lead delivery mechanism</li>
-                <li>Second Portion: Houses the lead storage and insertion system</li>
-            </ul>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Writing Unit Specs -->
+                <div class="technical-note">
+                    <h3 class="text-xl font-bold mb-2">Writing Unit</h3>
+                    <ul class="list-disc ml-6">
+                        <li>First Portion Diameter: Variable (Tapered Design)</li>
+                        <li>Lead Size Compatibility: 0.3mm - 0.7mm</li>
+                        <li>Chuck Mechanism: Triple-split design</li>
+                        <li>Lead Storage Capacity: Multiple leads</li>
+                    </ul>
+                </div>
 
-            <h3 class="text-xl font-bold mb-2">Pressure System</h3>
-            <p class="mb-4">The innovative pressure detection system includes:</p>
-            <ul class="list-disc ml-6 mb-4">
-                <li>Pen Pressure Transmitter: Transfers writing pressure through a mechanical linkage</li>
-                <li>Pressure Detector: Converts mechanical pressure into electronic signals</li>
-            </ul>
+                <!-- Pressure System Specs -->
+                <div class="technical-note">
+                    <h3 class="text-xl font-bold mb-2">Pressure System</h3>
+                    <ul class="list-disc ml-6">
+                        <li>Detection Range: Multiple pressure levels</li>
+                        <li>Transmitter Design: Off-axis configuration</li>
+                        <li>Detector Type: Capacitive/Resistive</li>
+                        <li>Response Time: Real-time detection</li>
+                    </ul>
+                </div>
 
-            <h3 class="text-xl font-bold mb-2">Electronic Components</h3>
-            <p class="mb-4">The electronic system consists of:</p>
-            <ul class="list-disc ml-6 mb-4">
-                <li>Core Section: Contains the coil for electromagnetic resonance</li>
-                <li>Circuit Board: Processes pressure and position data</li>
-                <li>Transmission Circuit: Communicates with the position detecting device</li>
-            </ul>
+                <!-- Core Section Specs -->
+                <div class="technical-note">
+                    <h3 class="text-xl font-bold mb-2">Core Section</h3>
+                    <ul class="list-disc ml-6">
+                        <li>Ferrite Core Type: Tubular design</li>
+                        <li>Coil Configuration: EMR/AES compatible</li>
+                        <li>Signal Frequency: Variable based on system</li>
+                        <li>Core Material: High-permeability ferrite</li>
+                    </ul>
+                </div>
+
+                <!-- Electronics Specs -->
+                <div class="technical-note">
+                    <h3 class="text-xl font-bold mb-2">Electronics</h3>
+                    <ul class="list-disc ml-6">
+                        <li>Circuit Type: Resonant/Capacitive</li>
+                        <li>Power Source: EMR/Battery (AES)</li>
+                        <li>Signal Processing: Real-time</li>
+                        <li>Communication: Wireless</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- Key Innovations -->
+        <!-- Functional Description -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Operational Principles</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2">Writing Mechanism</h3>
+                <p class="mb-4">The writing mechanism employs a sophisticated mechanical pencil system with the following key features:</p>
+                <ul class="list-disc ml-6 mb-4">
+                    <li>Lead delivery controlled by knocker mechanism</li>
+                    <li>Self-adjusting chuck system for consistent lead grip</li>
+                    <li>Spring-loaded pressure distribution</li>
+                    <li>Lead breakage prevention system</li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2">Pressure Detection System</h3>
+                <p class="mb-4">The innovative off-axis pressure detection system features:</p>
+                <ul class="list-disc ml-6 mb-4">
+                    <li>Mechanical pressure transmission through linkage</li>
+                    <li>Precise pressure quantification</li>
+                    <li>Real-time pressure data processing</li>
+                    <li>Multi-level pressure sensitivity</li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2">Signal Processing</h3>
+                <p class="mb-4">The electronic system processes and transmits data through:</p>
+                <ul class="list-disc ml-6 mb-4">
+                    <li>EMR/AES signal generation</li>
+                    <li>Position data processing</li>
+                    <li>Pressure data integration</li>
+                    <li>Wireless data transmission</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Connection Diagrams -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">System Integration</h2>
+            <div class="mermaid">
+                flowchart TB
+                    subgraph MechanicalSystem
+                        WriteM[Writing Mechanism]
+                        PressM[Pressure Mechanism]
+                        LeadM[Lead Management]
+                    end
+
+                    subgraph ElectronicSystem
+                        PS[Pressure Sensor]
+                        CB[Circuit Board]
+                        TC[Transmission Circuit]
+                    end
+
+                    subgraph CommunicationSystem
+                        EMR[EMR Signal]
+                        AES[AES Signal]
+                        PD[Position Detection]
+                    end
+
+                    WriteM --> PressM
+                    PressM --> PS
+                    PS --> CB
+                    CB --> TC
+                    TC --> EMR & AES
+                    EMR & AES --> PD
+                    LeadM --> WriteM
+            </div>
+        </div>
+
+        <!-- Material Properties -->
         <div class="bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold mb-4">Key Innovations</h2>
-            <ul class="list-disc ml-6">
-                <li class="mb-2">Off-axis pressure detection system that doesn't interfere with lead movement</li>
-                <li class="mb-2">Integrated mechanical pencil functionality with digital input capabilities</li>
-                <li class="mb-2">Dual-purpose design allowing both physical writing and digital data capture</li>
-                <li class="mb-2">Compatible with both EMR and AES position detecting systems</li>
-            </ul>
+            <h2 class="text-2xl font-bold mb-4">Material Specifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="technical-note">
+                    <h3 class="text-xl font-bold mb-2">Structural Components</h3>
+                    <ul class="list-disc ml-6">
+                        <li>Outer Casing: Durable synthetic resin</li>
+                        <li>Core Section: High-grade ferrite</li>
+                        <li>Mechanical Parts: Precision-engineered metals</li>
+                        <li>Circuit Housing: Impact-resistant materials</li>
+                    </ul>
+                </div>
+                <div class="technical-note">
+                    <h3 class="text-xl font-bold mb-2">Electronic Components</h3>
+                    <ul class="list-disc ml-6">
+                        <li>Circuit Board: Multi-layer PCB</li>
+                        <li>Sensors: High-sensitivity materials</li>
+                        <li>Coil: Precision-wound copper</li>
+                        <li>Connectors: Gold-plated contacts</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -119,6 +240,9 @@
             startOnLoad: true,
             theme: 'default',
             securityLevel: 'loose',
+            flowchart: {
+                curve: 'basis'
+            }
         });
     </script>
 </body>
